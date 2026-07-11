@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowersDb - Build</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="build.html">Build</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+
+        <h1>Build Your Green Space</h1>
+        <p>Enter your dimensions and preferences</p>
+
+		<div class="box-container">
+
+			<!-- form box -->
+            <div class="box grape-box" style="width: 100%; max-width: 600px; margin: auto;">
+                <form action="#" method="POST">
+                    <h2>Garden Builder</h2>
+                    <!-- W-->
+                    <label for="width">Width</label>
+                    <input type="number" id="width" name="width" placeholder="Enter width" required>
+
+                    <!-- L -->
+                    <label for="length">Length</label>
+                    <input type="number" id="length" name="length" placeholder="Enter length" required>
+
+                    <!-- H -->
+                    <label for="height">Height</label>
+                    <input type="number" id="height" name="height" placeholder="Enter height" required>
+
+                    <!--Season-->
+                    <label for="season">Season</label>
+                    <select id="season" name="season" required>
+                        <option value="">Select a season</option>
+                        <option value="spring">Spring</option>
+                        <option value="summer">Summer</option>
+                        <option value="autumn">Autumn</option>
+                        <option value="winter">Winter</option>
+						<option value="winter">Indoor</option>
+                    </select>
+                    <button type="submit">Build Plan</button>
+					
+                </form>
+            </div>
+        </div>
+    </section>
+	
+	
+	<!-- Result  -->
+	<div class="box grape-box" style="width: 100%; max-width: 600px; margin: 20px auto;">
+	<div id="result"></div>
+	</div>
+	
+	<script>
+	document.querySelector("form").addEventListener("submit", function(e) {e.preventDefault();
+		const season = document.getElementById("season").value;
+		let image = "";
+		let length = 0;
+		
+		switch (season) {
+		case "spring":
+            image = "img/default_spring_pink_petunya.jpg";
+            length = 10;
+			description = "Pink Pettunias"
+            break;
+
+		case "summer":
+			image = "img/default_summer.jpg";
+			length = 30;
+			description = "SunFlowers"
+			break;
+
+		case "autumn":
+			image = "img/default_fall_pansies.png";
+			length = 18;
+			description = "Pansies"
+			break;
+
+		case "winter":
+			image = "img/default_winter_mint.jpg";
+			length = 5;
+			description = "Mint *Potted Indoor"
+			break;
+
+		case "indoor":
+			image = "img/default.jpg";
+			length = 6;
+			description = ""
+			break;
+	}
+
+	document.getElementById("result").innerHTML = `
+		<h2>Garden Plan</h2>
+		<img src="${image}" alt="${season} garden" width="300">
+		<p>Recommended Length: ${length} metres</p>
+		<p>${description}</p>
+		`;});
+	</script>
+
+</body>
+</html>
